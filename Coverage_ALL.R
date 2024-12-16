@@ -67,8 +67,4 @@ ggplot(combined_data_summarized, aes(x = Mean_Position, y = Mean_Coverage, color
 # Ideally we would adjust this code to group all the background
 # and then have the last strain as the ancestor - might need
 # multiple plots as a panel - but potential here
-getwd()
-
-cd /Users/evaedwards/BAMoutputs
-
 
