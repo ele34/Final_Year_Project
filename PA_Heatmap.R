@@ -31,14 +31,14 @@ presence_absence_matrix <- table(expanded_data$mutation_ID, expanded_data$Strain
 matrix_df <- as.data.frame(as.table(presence_absence_matrix))
 colnames(matrix_df) <- c("mutation_ID", "Strain", "Presence")
 
-# 8. Convert 'Presence' to a factor to ensure it is treated as discrete
+# 8. Convert 'Presence' to a factor format so it can be treated as discrete
 matrix_df$Presence <- as.factor(matrix_df$Presence)
 
 # 9. Checking for values to make sure there are no errors
 unique(matrix_df$Presence)
 subset(matrix_df, Presence == 2)
 
-# 10. Ensure 'Presence' is a factor for plotting
+# 10. Ensure 'Presence' is in factor form for plotting
 matrix_df$Presence <- factor(matrix_df$Presence, levels = c(0, 1))
 
 # 11. Creating the heatmap
@@ -47,8 +47,8 @@ ggplot(matrix_df, aes(x = mutation_ID, y = Strain, fill = Presence)) +
   scale_fill_manual(values = c("white", "black"), name = "Presence") + # have black and white colours
   theme_minimal() +
   theme(
-    axis.text.x = element_text(angle = 90, hjust = 1, vjust=1, size = 1),  # Smaller font for x-axis
-    axis.text.y = element_text(size = 3)                         # Smaller font for y-axis
+    axis.text.x = element_text(angle = 90, hjust = 1, vjust=1, size = 1),  
+    axis.text.y = element_text(size = 3)                         
   ) +
   labs(title = "Mutation Presence Across Strains",
        x = "Mutation ID",
