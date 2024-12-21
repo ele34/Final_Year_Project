@@ -60,6 +60,29 @@ data <- read.csv("filtered_data3.csv")
 
 library(ggtext)
 
+# 5. Expanding the data to create a binary matrix
+expanded_data <- data.frame(
+  mutation_ID = rep(data$mutation_ID, lengths(data$Strain)),
+  Strain = unlist(data$Strain)
+)
+
+# 6. Creating the binary presence-absence matrix
+presence_absence_matrix <- table(expanded_data$mutation_ID, expanded_data$Strain)
+
+# 7. Convert to a the binary matrix to a data frame for plotting
+matrix_df <- as.data.frame(as.table(presence_absence_matrix))
+colnames(matrix_df) <- c("mutation_ID", "Strain", "Presence")
+
+# 8. Convert 'Presence' to a factor format so it can be treated as discrete
+matrix_df$Presence <- as.factor(matrix_df$Presence)
+
+# 10. Checking for values to make sure there are no errors
+unique(matrix_df$Presence)
+subset(matrix_df, Presence == 2)
+
+# 11. Ensure 'Presence' is in factor form for plotting
+matrix_df$Presence <- factor(matrix_df$Presence, levels = c(0, 1))
+
 # 1. Create strain categories based on prefixes
 matrix_df <- matrix_df %>%
   mutate(Strain_Category = case_when(
