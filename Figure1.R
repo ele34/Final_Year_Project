@@ -189,7 +189,6 @@ pheatmap(
 )
 
 
-
 # Part 3 - Statistical analysis (think this is more relevant later)
 # Performing an anova
 
