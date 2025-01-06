@@ -5,11 +5,11 @@
 getwd()
 
 # Change to appropriate directory and check
-setwd("/Users/evaedwards/BAMoutputs")
+setwd("/Users/evaedwards/Final-Year-Project")
 getwd()
 
 # Load coverage plot without headers
-coverage_data <- read.table("NW14.txt", header = FALSE) # fill with appropriate .txt files
+coverage_data <- read.table("NW15.txt", header = FALSE) # fill with appropriate .txt files
 
 # Assign custom column names
 colnames(coverage_data) <- c("Chromosome name", "Position", "Coverage")
@@ -48,5 +48,5 @@ coverage_data_summarized <- coverage_data %>%
 # Create the plot using the summarized data - remeber to change title each strain
 ggplot(coverage_data_summarized, aes(x = Mean_Position, y = Mean_Coverage)) +
   geom_line() +
-  labs(x = "Position", y = "Mean Coverage (5 kbp window)", title = "NW14 Read Coverage Plot (Summarized)") +
+  labs(x = "Position", y = "Mean Coverage (5 kbp window)", title = "NW15 Read Coverage Plot (Summarized)") +
   theme_minimal()
