@@ -455,5 +455,25 @@ model <- lmer(
 summary(model)
 confint(model)
 
+# Visualization of key results 
+# change depending on what we are looking at 
+
+# Get tidy summary of fixed effects with confidence intervals
+fixed_effects <- tidy(model, effects = "fixed", conf.int = TRUE)
+fixed_effects <- fixed_effects[fixed_effects$term != "(Intercept)", ]
+
+# Plot the estimates and 95% CIs
+fixed_effects$sig <- ifelse(fixed_effects$p.value < 0.05, "Significant", "Not Significant")
+ggplot(fixed_effects, aes(x = term, y = estimate, color = sig)) +
+  geom_point(size = 3) +
+  geom_errorbar(aes(ymin = conf.low, ymax = conf.high), width = 0.2) +
+  # geom_text(aes(label = sprintf("p = %.50f", p.value)), hjust = -0.2, size = 3) +
+  geom_hline(yintercept = 0, linetype = "dashed", color = "gray") +
+  coord_flip() +
+  scale_color_manual(values = c("black", "red")) +
+  theme_minimal() +
+  labs(title = "All SNPs",
+       x = "", y = "Estimate", color = " ")
+
 
 
