@@ -19,8 +19,6 @@ library(dplyr)
 library(ggtext)
 library(pheatmap)
 library(tidyverse)
-library(vegan)
-library(proxy)
 library(lmerTest)
 
 
