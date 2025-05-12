@@ -361,7 +361,8 @@ print(kruskal_result)
 dunn_result <- dunn.test(data$UCNVG, data$Prefix, method = "bonferroni") 
 
 
-# Making a combined plot
+# Making a combined plot - choose one based on what you want to display
+# I went for number 3 to summerise the findings
 combined_plot <- (plot1 | plot2 | plot3 | plot4 | plot5 | plot6 | plot7 | plot8 | plot9 | plot10) 
 combined_plot <- (plot1 | plot2 | plot7 | plot8 | plot3 | plot4 | plot5 ) 
 combined_plot <- (plot1 | plot2 | plot7 | plot8  ) 
