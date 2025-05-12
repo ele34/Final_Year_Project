@@ -15,8 +15,6 @@ library(dunn.test)
 
 # MUT
 # Keep only the two columns needed for analysis
-# Keep only the two columns needed for analysis
-# Keep only the two columns needed for analysis
 data <- data[, 1:2]
 head(data)
 
